@@ -19,6 +19,7 @@ def request_paper_with_arXiv_api(keyword: str, max_results: int, link: str = "OR
     keyword = "\"" + keyword + "\""
     url = "http://export.arxiv.org/api/query?search_query=ti:{0}+{2}+abs:{0}&max_results={1}&sortBy=lastUpdatedDate".format(keyword, max_results, link)
     url = urllib.parse.quote(url, safe="%/:=&?~#+!$,;'@()*[]")
+    print("[###] keyword: {0}, url: {1}".format(keyword, url))
     response = urllib.request.urlopen(url).read().decode('utf-8')
     feed = feedparser.parse(response)
 
@@ -125,20 +126,20 @@ def generate_table(papers: List[Dict[str, str]], ignore_keys: List[str] = []) ->
         body += "\n| " + " | ".join(paper.values()) + " |"
     return header + body
 
-def back_up_files():
+def back_up_files(readme_file: str = "README.md", issue_template_file: str = ".github/ISSUE_TEMPLATE.md"):
     # back up README.md and ISSUE_TEMPLATE.md
-    shutil.move("README.md", "README.md.bk")
-    shutil.move(".github/ISSUE_TEMPLATE.md", ".github/ISSUE_TEMPLATE.md.bk")
+    shutil.move(readme_file, readme_file + ".bk")
+    shutil.move(issue_template_file, issue_template_file + ".bk")
 
-def restore_files():
+def restore_files(readme_file: str = "README.md", issue_template_file: str = ".github/ISSUE_TEMPLATE.md"):
     # restore README.md and ISSUE_TEMPLATE.md
-    shutil.move("README.md.bk", "README.md")
-    shutil.move(".github/ISSUE_TEMPLATE.md.bk", ".github/ISSUE_TEMPLATE.md")
+    shutil.move(readme_file + ".bk", readme_file)
+    shutil.move(issue_template_file + ".bk", issue_template_file)
 
-def remove_backups():
+def remove_backups(readme_file: str = "README.md", issue_template_file: str = ".github/ISSUE_TEMPLATE.md"):
     # remove README.md and ISSUE_TEMPLATE.md
-    os.remove("README.md.bk")
-    os.remove(".github/ISSUE_TEMPLATE.md.bk")
+    os.remove(readme_file + ".bk")
+    os.remove(issue_template_file + ".bk")
 
 def get_daily_date():
     # get beijing time in the format of "March 1, 2021"

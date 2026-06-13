@@ -12,6 +12,7 @@ import time
 import pytz
 from datetime import datetime
 
+from config import keywords, max_result, issues_result, readme_file, issue_template_file, column_names
 from utils import get_daily_papers_by_keyword_with_retries, generate_table, back_up_files,\
     restore_files, remove_backups, get_daily_date
 
@@ -23,7 +24,7 @@ beijing_timezone = pytz.timezone('Asia/Shanghai')
 # get current beijing time date in the format of "2021-08-01"
 current_date = datetime.now(beijing_timezone).strftime("%Y-%m-%d")
 # get last update date from README.md
-with open("README.md", "r") as f:
+with open(readme_file, "r") as f:
     while True:
         line = f.readline()
         if "Last update:" in line: break
@@ -31,27 +32,15 @@ with open("README.md", "r") as f:
     # if last_update_date == current_date:
         # sys.exit("Already updated today!")
 
-# keywords = ["Time Series", "Trajectory", "Graph Neural Networks"] # TODO add more keywords
-keywords = ["DINO", "Face Recognition", "Face Alignment", "Object Detection",
-            "SAM"]
-
-max_result = 30 # maximum query results from arXiv API for each keyword
-issues_result = 15 # maximum papers to be included in the issue
-
-# all columns: Title, Authors, Abstract, Link, Tags, Comment, Date
-# fixed_columns = ["Title", "Link", "Date"]
-
-column_names = ["Title", "Link", "Abstract", "Date", "Comment"]
-
-back_up_files() # back up README.md and ISSUE_TEMPLATE.md
+back_up_files(readme_file, issue_template_file) # back up README.md and ISSUE_TEMPLATE.md
 
 # write to README.md
-f_rm = open("README.md", "w") # file for README.md
+f_rm = open(readme_file, "w") # file for README.md
 f_rm.write("# Daily Papers\n")
 f_rm.write("The project automatically fetches the latest papers from arXiv based on keywords.\n\nThe subheadings in the README file represent the search keywords.\n\nOnly the most recent articles for each keyword are retained, up to a maximum of 100 papers.\n\nYou can click the 'Watch' button to receive daily email notifications.\n\nLast update: {0}\n\n".format(current_date))
 
 # write to ISSUE_TEMPLATE.md
-f_is = open(".github/ISSUE_TEMPLATE.md", "w") # file for ISSUE_TEMPLATE.md
+f_is = open(issue_template_file, "w") # file for ISSUE_TEMPLATE.md
 f_is.write("---\n")
 f_is.write("title: Latest {0} Papers - {1}\n".format(issues_result, get_daily_date()))
 f_is.write("labels: documentation\n")
@@ -68,7 +57,7 @@ for keyword in keywords:
         print("Failed to get papers!")
         f_rm.close()
         f_is.close()
-        restore_files()
+        restore_files(readme_file, issue_template_file)
         sys.exit("Failed to get papers!")
     rm_table = generate_table(papers)
     is_table = generate_table(papers[:issues_result], ignore_keys=["Abstract"])
@@ -80,4 +69,4 @@ for keyword in keywords:
 
 f_rm.close()
 f_is.close()
-remove_backups()
+remove_backups(readme_file, issue_template_file)
