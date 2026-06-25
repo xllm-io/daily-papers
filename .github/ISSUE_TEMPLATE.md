@@ -1,5 +1,5 @@
 ---
-title: Latest 30 Papers - June 25, 2026
+title: Latest 30 Papers - June 26, 2026
 labels: documentation
 ---
 **Please check the [Github](https://github.com/zezhishao/MTS_Daily_ArXiv) page for a better reading experience and more papers.**
@@ -7,10 +7,17 @@ labels: documentation
 ## KV Cache
 | **Title** | **Date** | **Comment** |
 | --- | --- | --- |
+| **[Model-Native Computing Architecture: Envisioning Future System Architecture Through the Lens of Computer Architecture](https://arxiv.org/abs/2606.00288v3)** | 2026-06-24 |  |
+| **[Streaming-dLLM: Accelerating Diffusion LLMs via Suffix Pruning and Dynamic Decoding](https://arxiv.org/abs/2601.17917v3)** | 2026-06-24 | <details><summary>Tech ...</summary><p>Tech report. Code is available at https://github.com/xiaoshideta/Streaming-dLLM</p></details> |
+| **[Cache-Resident LLM Inference in GB-Scale Last-Level Caches](https://arxiv.org/abs/2606.25353v1)** | 2026-06-24 |  |
+| **[Reflective VLA: In-Context Action Consequences Make VLAs Generalize](https://arxiv.org/abs/2606.25215v1)** | 2026-06-23 |  |
+| **[ASAP: Agent-System Co-Design for Wall-Clock-Centered Auto HPO Research for ML Experiments](https://arxiv.org/abs/2606.25207v1)** | 2026-06-23 |  |
+| **[SplitZip: Ultra Fast Lossless KV Compression for Disaggregated LLM Serving](https://arxiv.org/abs/2605.01708v3)** | 2026-06-23 |  |
 | **[Does Mixture-of-Experts Actually Help Inference on Consumer and Edge Hardware? An Empirical Study](https://arxiv.org/abs/2606.21428v2)** | 2026-06-23 | <details><summary>18 pa...</summary><p>18 pages, 7 tables, 4 figures. Submitted to FAIEMA 2026. Code available at https://github.com/Analytics-Everywhere-Lab/edge-moe</p></details> |
 | **[CrossPool: Efficient Multi-LLM Serving for Cold MoE Models through KV-Cache and Weight Disaggregation](https://arxiv.org/abs/2606.24506v1)** | 2026-06-23 |  |
 | **[CompressKV: Semantic-Retrieval-Guided KV-Cache Compression for Resource-Efficient Long-Context LLM Inference](https://arxiv.org/abs/2606.24467v1)** | 2026-06-23 | <details><summary>arXiv...</summary><p>arXiv admin note: substantial text overlap with arXiv:2508.02401</p></details> |
 | **[Grouped Query Experts: Mixture-of-Experts on GQA Self-Attention](https://arxiv.org/abs/2606.20945v2)** | 2026-06-23 |  |
+| **[Dustin: Draft-Augmented Sparse Verification for Efficient Long-Context Generation with Speculative Decoding](https://arxiv.org/abs/2606.24957v1)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted to ICML 2026. 9 pages main text, includes references and appendix</p></details> |
 | **[Collaborative Lossless LLM Inference Serving with Offloading-based Pipeline Parallelism on Edge Devices](https://arxiv.org/abs/2512.21835v2)** | 2026-06-23 | 12 pages, 16 figures |
 | **[WAND: Windowed Attention and Knowledge Distillation for Efficient Autoregressive Text-to-Speech Models](https://arxiv.org/abs/2604.08558v2)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted at Interspeech 2026</p></details> |
 | **[Spectral Evolution-Guided Token Pruning in Multimodal Large Language Models](https://arxiv.org/abs/2606.24165v1)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted to ECCV 2026</p></details> |
@@ -30,23 +37,19 @@ labels: documentation
 | **[Keyless Attention: Value-Space Routing and Value-Only Caching for Efficient Transformers](https://arxiv.org/abs/2606.21848v1)** | 2026-06-20 | 14 pages, 4 figures |
 | **[Agent-Assisted Side-Channel Attacks on Non-Prefix KV Cache in RAG](https://arxiv.org/abs/2606.21842v1)** | 2026-06-20 | 15 pages, 8 figures |
 | **[Good-Enough LLM Obfuscation (GELO)](https://arxiv.org/abs/2603.05035v3)** | 2026-06-19 |  |
-| **[HERALD: High-Throughput Block Diffusion LLM Serving via CPU-GPU Cooperative KV Cache Retrieval](https://arxiv.org/abs/2606.21633v1)** | 2026-06-19 |  |
-| **[Recency/Frequency Adaptive KV Caching for Large Language Model Serving](https://arxiv.org/abs/2606.21238v1)** | 2026-06-19 | <details><summary>Accep...</summary><p>Accepted at the ICML 2026 Workshop on Resource-Adaptive Foundation Model Inference (AdaptFM)</p></details> |
-| **[FleetAgent: Teleoperation Assistant for Autonomous Fleets via Vectorized V2N Messages](https://arxiv.org/abs/2606.21222v1)** | 2026-06-19 |  |
-| **[UltraQuant: 4-bit KV Caching for Context-Heavy Agents](https://arxiv.org/abs/2606.20474v2)** | 2026-06-19 | 11 pages, 9 figures |
-| **[Demystifying Numerical Instability in LLM Inference: Achieving Reproducible Inference for Mission-Critical Tasks with HEAL](https://arxiv.org/abs/2606.21023v1)** | 2026-06-19 |  |
-| **[SAGA: Workflow-Atomic Scheduling for AI Agent Inference on GPU Clusters](https://arxiv.org/abs/2605.00528v2)** | 2026-06-19 |  |
-| **[AGENTSERVESIM: A Hardware-aware Simulator for Multi-Turn LLM Agent Serving](https://arxiv.org/abs/2606.09613v2)** | 2026-06-18 | Preprint |
 
 ## Sparse Attention
 | **Title** | **Date** | **Comment** |
 | --- | --- | --- |
+| **[Sol Video Inference Engine: Agent-Native Full-Stack Acceleration Framework for Efficient Video Generation](https://arxiv.org/abs/2606.23743v2)** | 2026-06-24 |  |
+| **[Memory Retrieval in Visuomotor Policies for Long-Horizon Robot Control](https://arxiv.org/abs/2606.25136v1)** | 2026-06-23 | <details><summary>16 pa...</summary><p>16 pages, 5 tables, 8 figures</p></details> |
+| **[Chorus II: Cross-Request Sparsity Reuse for Efficient Image-to-Video Generation](https://arxiv.org/abs/2606.25040v1)** | 2026-06-23 |  |
+| **[Emergent Capabilities Arise Randomly from Learning Sparse Attention Patterns](https://arxiv.org/abs/2606.25010v1)** | 2026-06-23 | 18 pages, 13 figures |
 | **[VSANet: View-aware Sparse Attention Network for Light Field Image Denoising](https://arxiv.org/abs/2606.24737v1)** | 2026-06-23 |  |
 | **[Scalable Physics-Inspired Transformers for Spin Glasses](https://arxiv.org/abs/2606.22984v2)** | 2026-06-23 |  |
 | **[The Sparse Frontier: Sparse Attention Trade-offs in Transformer LLMs](https://arxiv.org/abs/2504.17768v3)** | 2026-06-22 |  |
 | **[ScalingAttention: Discovering Intrinsic Sparse Attention Topology for Video Diffusion Transformers](https://arxiv.org/abs/2606.23019v1)** | 2026-06-22 | 18 pages, 9 figures |
 | **[SpotAttention: Plug-In Block-Sparse Routing for Pretrained Long-Context Transformers](https://arxiv.org/abs/2606.22874v1)** | 2026-06-22 | <details><summary>24 pa...</summary><p>24 pages, 10 figures, 9 tables</p></details> |
-| **[Sol Video Inference Engine: Agent-Native Full-Stack Acceleration Framework for Efficient Video Generation](https://arxiv.org/abs/2606.23743v1)** | 2026-06-21 |  |
 | **[StreamKL: Fast and Memory-Efficient KL Divergence for Boosting Attention Distillation](https://arxiv.org/abs/2606.20005v1)** | 2026-06-18 |  |
 | **[Light Interaction: Training-Free Inference Acceleration for Interactive Video World Models](https://arxiv.org/abs/2605.31158v3)** | 2026-06-18 | <details><summary>13 pa...</summary><p>13 pages, 6 figures, 3 tables. Project page: https://2843721358l-del.github.io/Light-Interaction-Project/</p></details> |
 | **[SAC: Disaggregated KV Cache System for Sparse Attention LLMs with CXL](https://arxiv.org/abs/2606.19746v1)** | 2026-06-18 |  |
@@ -68,48 +71,60 @@ labels: documentation
 | **[MAGE: All-[MASK] Block Already Knows Where to Look in Block Diffusion LLM](https://arxiv.org/abs/2602.14209v2)** | 2026-06-05 |  |
 | **[FG-Attn: Leveraging Fine-Grained Sparse Attention in Video Diffusion Models](https://arxiv.org/abs/2509.16518v2)** | 2026-06-04 |  |
 | **[You Only Index Once: Cross-Layer Sparse Attention with Shared Routing](https://arxiv.org/abs/2606.06467v1)** | 2026-06-04 |  |
-| **[Vortex: Efficient and Programmable Sparse Attention Serving for AI Agents](https://arxiv.org/abs/2606.06453v1)** | 2026-06-04 |  |
-| **[RhymeFlow: Training-Free Acceleration for Video Generation with Asynchronous Denoising Flow Scheduling](https://arxiv.org/abs/2606.06309v1)** | 2026-06-04 | <details><summary>Proje...</summary><p>Project Page: https://simon-dcs.github.io/Website-of-RhymeFlow/, Code: https://github.com/Simon-Dcs/RhymeFlow</p></details> |
-| **[SSA: Sparse Sparse Attention by Aligning Full and Sparse Attention Outputs in Feature Space](https://arxiv.org/abs/2511.20102v4)** | 2026-06-04 | 34 pages |
 
 ## Training
 | **Title** | **Date** | **Comment** |
 | --- | --- | --- |
+| **[Neglected Free Lunch from Post-training: Progress Advantage for LLM Agents](https://arxiv.org/abs/2606.26080v1)** | 2026-06-24 |  |
+| **[Did Models Learn Sufficiently? Attribution-Guided Training via Subset-Selected Counterfactual Augmentation](https://arxiv.org/abs/2511.12100v2)** | 2026-06-24 |  |
+| **[RoboRouter: Training-Free Policy Routing for Robotic Manipulation](https://arxiv.org/abs/2603.07892v4)** | 2026-06-24 |  |
+| **[Improving Neural Network Training by Decoupling the Magnitude and Direction of Weight Vectors](https://arxiv.org/abs/2606.25971v1)** | 2026-06-24 |  |
+| **[OracleAnalyser: Analysing Implicit Semantics of Oracle Bone Scripts through MLLMs with Post-training](https://arxiv.org/abs/2606.25906v1)** | 2026-06-24 |  |
+| **[Certified Robust Invariant Polytope Training in Neural Controlled ODEs](https://arxiv.org/abs/2408.01273v3)** | 2026-06-24 |  |
+| **[Cross-Modal Robustness Transfer (CMRT): Training Robust Speech Translation Models Using Adversarial Text](https://arxiv.org/abs/2602.11933v2)** | 2026-06-24 | <details><summary>A sho...</summary><p>A shorter version has been accepted at INTERSPEECH2026</p></details> |
+| **[Learning task-specific subspaces via interventional post-training of speech foundation models](https://arxiv.org/abs/2606.17967v2)** | 2026-06-24 | <details><summary>Accep...</summary><p>Accepted to Interspeech 2026; 6 pages (4 main body), 2 figures</p></details> |
+| **[Cross-View Variance Correlation in Path-Traced Stereo:A Hidden Shortcut in Synthetic Training Data](https://arxiv.org/abs/2606.25483v1)** | 2026-06-24 |  |
+| **[To View Transform or Not to View Transform: NeRF-based Pre-training Perspective](https://arxiv.org/abs/2603.28090v2)** | 2026-06-24 | <details><summary>The F...</summary><p>The Fourteenth International Conference on Learning Representations (ICLR'26)</p></details> |
+| **[The Interplay of Harness Design and Post-Training in LLM Agents](https://arxiv.org/abs/2606.25447v1)** | 2026-06-24 |  |
+| **[Does Translation-Enhanced Speech Encoder Pre-training Affect Speech LLMs?](https://arxiv.org/abs/2606.25444v1)** | 2026-06-24 | <details><summary>Accep...</summary><p>Accepted to Interspeech2026</p></details> |
+| **[TTSA3R: Training-Free Temporal-Spatial Adaptive Persistent State for Streaming 3D Reconstruction](https://arxiv.org/abs/2601.22615v3)** | 2026-06-24 |  |
+| **[Supervised Post-training of Speech Foundation Models for Robust Adaptation in Speech Deepfake Detection](https://arxiv.org/abs/2606.25328v1)** | 2026-06-24 |  |
+| **[PhoneBuddy: Training Open Models for Agentic Phone Use](https://arxiv.org/abs/2606.23049v2)** | 2026-06-24 |  |
+| **[EPTS: Elastic Post-Training Sparsity for Efficient Large Language Model Compression](https://arxiv.org/abs/2606.25285v1)** | 2026-06-24 | KDD 2026 |
+| **[SplatPainter: Interactive Authoring of 3D Gaussians from 2D Edits via Test-Time Training](https://arxiv.org/abs/2512.05354v2)** | 2026-06-24 | <details><summary>proje...</summary><p>project page https://y-zheng18.github.io/SplatPainter/</p></details> |
+| **[Do Prompt-Elicited Trajectories Reflect Training-Time Reward Hacking? A Systematic Study on Monitoring Trainig-Time Reward Hacking in Code Generation](https://arxiv.org/abs/2604.23488v2)** | 2026-06-23 |  |
+| **[TASR: Training-Free Adaptive Stopping for Iterative Retrieval](https://arxiv.org/abs/2606.13814v3)** | 2026-06-23 | <details><summary>20 pa...</summary><p>20 pages, 5 figures. Accepted at Agent4IR Workshop, KDD 2026</p></details> |
+| **[Training for the Model You Return: Improving Optimization for Iterate-Averaged Language Models](https://arxiv.org/abs/2606.25086v1)** | 2026-06-23 |  |
+| **[FreeStory: Training-Free Character Consistency for Free-Form Visual Storytelling](https://arxiv.org/abs/2606.25079v1)** | 2026-06-23 |  |
+| **[Keeping the Evidence Chain: Semantic Evidence Allocation for Training-Free Token Pruning in Video Temporal Grounding](https://arxiv.org/abs/2603.05663v3)** | 2026-06-23 |  |
 | **[Matching Tasks to Objectives: Fine-Tuning and Prompt-Tuning Strategies for Encoder-Decoder Pre-trained Language Models](https://arxiv.org/abs/2606.24841v1)** | 2026-06-23 |  |
 | **[Less is More: Quality-Aware Training Data Selection for Scientific Summarization](https://arxiv.org/abs/2606.24828v1)** | 2026-06-23 |  |
 | **[Revealing Training Data Exposure in Vision Language Large Models via Parameter Gradients](https://arxiv.org/abs/2606.24774v1)** | 2026-06-23 |  |
+| **[TRACER: Training-Free Closed-Loop Structured Inference for Traffic Accident Reconstruction](https://arxiv.org/abs/2606.25002v1)** | 2026-06-23 |  |
 | **[Decentralised AI Training and Inference with BlockTrain](https://arxiv.org/abs/2606.24722v1)** | 2026-06-23 | <details><summary>First...</summary><p>First arXiv version. 17 pages</p></details> |
 | **[Training-Time Optical Priors for Wireless Capsule Endoscopy Classification: Hemoglobin-Aware Input Fusion with Cross-Vendor Evaluation](https://arxiv.org/abs/2605.15062v2)** | 2026-06-23 | <details><summary>64 pa...</summary><p>64 pages, 11 figures, 15 tables. Expanded version: adds cross-vendor Galar evaluation (GalKva-2026 benchmark), cross-architecture replication (ResNet-18, ConvNeXt-Tiny), and foundation-model baselines. Code, checkpoints, and benchmark: https://github.com/integritynoble/Physics-Informed-PillCam . Submitted to Medical Image Analysis</p></details> |
 | **[Bridging Single Distortion Artifacts and Multifactorial Clinical Quality: Few-shot Biparametric MRI Quality Assessment via Distortion-trained Prototypical Networks](https://arxiv.org/abs/2606.18872v3)** | 2026-06-23 |  |
 | **[Knowledge-Graph Grounding Helps LLMs Only for Out-of-Training Knowledge: A Controlled Study on Clinical Question Answering](https://arxiv.org/abs/2606.22419v2)** | 2026-06-23 | <details><summary>9 pag...</summary><p>9 pages. Code: https://github.com/samyama-ai/clinical-llm-graphrag</p></details> |
-| **[EERLoss: A Novel Loss Function for Training Deep Biometric Models. A Case Study in Keystroke Dynamics](https://arxiv.org/abs/2606.24586v1)** | 2026-06-23 |  |
-| **[Robust and Fast Training via Per-Sample Clipping](https://arxiv.org/abs/2605.02701v2)** | 2026-06-23 |  |
-| **[A Training-Free Mixture-of-Agents Framework for Multi-Document Summarization using LLMs and Knowledge Graphs](https://arxiv.org/abs/2606.03867v2)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted by Neural Computing and Applications</p></details> |
-| **[Tuning without Peeking: Provable Generalization Bounds and Robust LLM Post-Training](https://arxiv.org/abs/2507.01752v4)** | 2026-06-23 |  |
-| **[HilDA: Hierarchical Distillation with Diffusion for Advancing Self-Supervised LiDAR Pre-training](https://arxiv.org/abs/2606.20189v3)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted to ECCV 2026. Maciej and Jesper contributed equally</p></details> |
-| **[Not All Invariants Are Equal: Curating Training Data to Accelerate Program Verification with SLMs](https://arxiv.org/abs/2603.15510v2)** | 2026-06-23 | <details><summary>A pre...</summary><p>A preprint of the ICML 2026 paper with the same title</p></details> |
-| **[Emotion Diffusion Classifier with Adaptive Margin Discrepancy Training for Facial Expression Recognition](https://arxiv.org/abs/2603.29578v2)** | 2026-06-23 |  |
-| **[Training-free Cross-domain Few-shot Segmentation via Robust Semantic Representation and Matching](https://arxiv.org/abs/2606.24297v1)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted by ECCV 2026</p></details> |
-| **[ASymPO: Asymmetric-Scale Policy Optimization for Asynchronous LLM Post-Training Without Behavior Information](https://arxiv.org/abs/2606.03070v3)** | 2026-06-23 | <details><summary>incor...</summary><p>incorrect proofs in the paper</p></details> |
-| **[Holistic Data Scheduler for LLM Pre-training via Multi-Objective Reinforcement Learning](https://arxiv.org/abs/2606.24133v1)** | 2026-06-23 | <details><summary>Our c...</summary><p>Our code is at https://github.com/DANG-ai/LLM-Training-Holistic-Data-Schedule</p></details> |
-| **[Stabilizing Physics-Informed Consistency Models via Structure-Preserving Training](https://arxiv.org/abs/2602.09303v2)** | 2026-06-23 | Accepted to KDD 2026 |
-| **[AfriqueLLM: How Data Mixing and Model Architecture Impact Continued Pre-training for African Languages](https://arxiv.org/abs/2601.06395v3)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted to ACL 2026 (Main Conference)</p></details> |
-| **[Dynamic Symmetric Point Tracking: Tackling Non-ideal Reference in Analog In-memory Training](https://arxiv.org/abs/2602.21321v2)** | 2026-06-22 |  |
-| **[Scaling Dense Retrieval with LLM-Annotated Training Data: Structured Mining and Progressive Curriculum for E-Commerce Sponsored Search](https://arxiv.org/abs/2606.23911v1)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted at E-Commerce Workshop, SIGIR 2026</p></details> |
-| **[Ground Then Rank: Revisiting Knowledge-Based VQA with Training-Free Entity Identification](https://arxiv.org/abs/2606.23881v1)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted by ACL 2026 Findings. Project page https://github.com/VAN-QIAN/ACL26-IBA/</p></details> |
-| **[SLEEPING-DISCO 9M: A large-scale pre-training dataset for generative music modeling](https://arxiv.org/abs/2506.14293v4)** | 2026-06-22 | <details><summary>The s...</summary><p>The submitter is withdrawing this paper to correct an administrative error regarding submission authorship and institutional affiliation. A corrected version may be submitted by the primary authors in the future</p></details> |
-| **[Ten Digits on a Train: AI-Assisted Verification of Two Eigenvalue Problems](https://arxiv.org/abs/2606.23821v1)** | 2026-06-22 |  |
-| **[Loss Landscape Poisoning: Targeted Extraction of Unseen Training Data from LLMs](https://arxiv.org/abs/2606.17110v2)** | 2026-06-22 | <details><summary>Updat...</summary><p>Updated author order. No technical changes</p></details> |
-| **[PISCES: Annotation-free Text-to-Video Post-Training via Optimal Transport-Aligned Rewards](https://arxiv.org/abs/2602.01624v2)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted to ICML 2026. Project page and code: https://roar-ai.github.io/pisces/</p></details> |
-| **[Contrastive Training with LLM-generated Near-Misses for Robust Code-Switching Speech Recognition](https://arxiv.org/abs/2606.06985v2)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted at INTERSPEECH 2026</p></details> |
-| **[Kamera: Unified Position-Invariant Multimodal KV Cache for Training-Free Reuse](https://arxiv.org/abs/2606.23581v1)** | 2026-06-22 |  |
-| **[Efficient Training of Boltzmann Generators Using Off-Policy Log-Dispersion Regularization](https://arxiv.org/abs/2602.03729v2)** | 2026-06-22 |  |
-| **[A First-Order Mean Field Control Analysis of Transformer Layers under Cross-Entropy Training](https://arxiv.org/abs/2606.23235v1)** | 2026-06-22 | 44 pages |
 
 ## Inference
 | **Title** | **Date** | **Comment** |
 | --- | --- | --- |
-| **[The Cost Geometry of Belief: finite-resource inference under noisy observation](https://arxiv.org/abs/2606.21585v2)** | 2026-06-23 | 21 page |
+| **[The Inference-Compute Frontier and a Latency-Efficient Architecture for Limit Order Book Prediction](https://arxiv.org/abs/2606.25986v1)** | 2026-06-24 |  |
+| **[Sol Video Inference Engine: Agent-Native Full-Stack Acceleration Framework for Efficient Video Generation](https://arxiv.org/abs/2606.23743v2)** | 2026-06-24 |  |
+| **[EnerInfer: Energy-Aware On-Device LLM Inference](https://arxiv.org/abs/2606.23001v2)** | 2026-06-24 |  |
+| **[Gaussian Mean Field Variational Inference can Overestimate Predictive Variance](https://arxiv.org/abs/2606.25745v1)** | 2026-06-24 |  |
+| **[The Cost Geometry of Belief: finite-resource inference under noisy observation](https://arxiv.org/abs/2606.21585v3)** | 2026-06-24 | 27 pages |
+| **[What Type of Inference is Active Inference?](https://arxiv.org/abs/2606.04935v3)** | 2026-06-24 |  |
+| **[PatchINR: Patch-Based Implicit Neural Representations for Efficient and Scalable Inference](https://arxiv.org/abs/2606.25534v1)** | 2026-06-24 |  |
+| **[Weak Moment Methods for Statistical Inference: with an Application to Robust Estimation](https://arxiv.org/abs/2604.23619v2)** | 2026-06-24 | <details><summary>34 pa...</summary><p>34 pages, one figure and five tables. Inserted further detail and additional examples. The distributional representation now is given by a tempered distribution instead of a pair formed by a tempered distribution and a kernel) and the kernel is viewed as an instrument for extracting information off the probability law from the tempered distribution</p></details> |
+| **[Brevity is the Soul of Inference Efficiency: Inducing Concision in VLMs via Data Curation](https://arxiv.org/abs/2606.25432v1)** | 2026-06-24 | <details><summary>36 pa...</summary><p>36 pages, see https://datologyai.com for more information</p></details> |
+| **[Cache-Resident LLM Inference in GB-Scale Last-Level Caches](https://arxiv.org/abs/2606.25353v1)** | 2026-06-24 |  |
+| **[General Techniques for Reducing Key-Switching Overhead in Privacy-Preserving Two-Party Transformer Inference](https://arxiv.org/abs/2606.25349v1)** | 2026-06-24 |  |
+| **[Consistent Zero-Shot Imitation with Contrastive Goal Inference](https://arxiv.org/abs/2510.17059v2)** | 2026-06-24 |  |
+| **[Nonparametric inference for nonstationary spatial point processes](https://arxiv.org/abs/2507.17600v2)** | 2026-06-24 |  |
+| **[Variational Inference via Entropic Transport Descent](https://arxiv.org/abs/2606.25265v1)** | 2026-06-24 | 28 pages, 1 figure |
+| **[Semantic Allocation in Ordered Bottlenecks: Predictive Residual Inference for Visual Representation Learning](https://arxiv.org/abs/2606.25232v1)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted to ICANN 2026 main proceedings. 12 pages, 5 figures</p></details> |
+| **[TRACER: Training-Free Closed-Loop Structured Inference for Traffic Accident Reconstruction](https://arxiv.org/abs/2606.25002v1)** | 2026-06-23 |  |
 | **[Decentralised AI Training and Inference with BlockTrain](https://arxiv.org/abs/2606.24722v1)** | 2026-06-23 | <details><summary>First...</summary><p>First arXiv version. 17 pages</p></details> |
 | **[Does Mixture-of-Experts Actually Help Inference on Consumer and Edge Hardware? An Empirical Study](https://arxiv.org/abs/2606.21428v2)** | 2026-06-23 | <details><summary>18 pa...</summary><p>18 pages, 7 tables, 4 figures. Submitted to FAIEMA 2026. Code available at https://github.com/Analytics-Everywhere-Lab/edge-moe</p></details> |
 | **[LoMime: Query-Efficient Membership Inference using Model Extraction in Label-Only Settings](https://arxiv.org/abs/2602.18934v2)** | 2026-06-23 |  |
@@ -124,31 +139,17 @@ labels: documentation
 | **[PRISM-SLAM: Probabilistic Ray-Grounded Inference for Scale-aware Metric SLAM](https://arxiv.org/abs/2605.19257v4)** | 2026-06-23 |  |
 | **[Towards Spec Learning: Inference-Time Alignment from Preference Pairs](https://arxiv.org/abs/2606.24004v1)** | 2026-06-22 |  |
 | **[MERGE: Minimal Expression-Replacement GEneralization Test for Natural Language Inference](https://arxiv.org/abs/2510.24295v2)** | 2026-06-22 | Pre-print |
-| **[Predictive variational inference: Learn the predictively optimal posterior distribution](https://arxiv.org/abs/2410.14843v4)** | 2026-06-22 | ICML 2026 |
-| **[MGI: Member vs Generated Inference](https://arxiv.org/abs/2606.23872v1)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted at ECCV 2026</p></details> |
-| **[Assumption-Lean Differential Variance Inference for Heterogeneous Treatment Effect Detection](https://arxiv.org/abs/2512.03254v4)** | 2026-06-22 |  |
-| **[Causal Inference with Multiple Misclassified Exposures: A Control Variate-Adjusted Calibration Weighting Approach](https://arxiv.org/abs/2606.23656v1)** | 2026-06-22 |  |
-| **[Concordia: JIT-Compiled Persistent-Kernel Checkpointing for Fault-Tolerant LLM Inference](https://arxiv.org/abs/2606.23521v1)** | 2026-06-22 |  |
-| **[Causal Inference with a Hidden Treatment](https://arxiv.org/abs/2405.09080v4)** | 2026-06-22 |  |
-| **[Field-level weak lensing cosmology with $<100$ simulations using multifidelity simulation-based inference](https://arxiv.org/abs/2606.23346v1)** | 2026-06-22 | <details><summary>19 + ...</summary><p>19 + 7 pages, 13 + 4 figures</p></details> |
-| **[Abstract representational geometry supports inference in large language models](https://arxiv.org/abs/2606.23345v1)** | 2026-06-22 |  |
-| **[Universal priors: solving empirical Bayes via Bayesian inference and pretraining](https://arxiv.org/abs/2602.15136v2)** | 2026-06-22 | <details><summary>To ap...</summary><p>To appear at COLT 2026. 43 pages, 5 figures. Code release at https://github.com/Anzoteh96/eb-transformers</p></details> |
-| **[Efficient Network Inference via Hardware-Aware Architecture Search, Model Pruning & Quantization](https://arxiv.org/abs/2606.23210v1)** | 2026-06-22 | 7 pages, 7 figures |
-| **[CoDe-R: Refining Decompiler Output with LLMs via Rationale Guidance and Adaptive Inference](https://arxiv.org/abs/2604.12913v2)** | 2026-06-22 | <details><summary>11 pa...</summary><p>11 pages, 7 figures, 6 tables. Accepted by IJCNN 2026</p></details> |
-| **[Gaussian Process Differential Ensembles for Joint Inference on Curves, Derivatives, and Integrals](https://arxiv.org/abs/2606.23036v1)** | 2026-06-22 |  |
-| **[Have You Ever Seen Them? Entity-level Membership Inference through Interrogating Large Language Models](https://arxiv.org/abs/2606.23030v1)** | 2026-06-22 |  |
-| **[EnerInfer: Energy-Aware On-Device LLM Inference](https://arxiv.org/abs/2606.23001v1)** | 2026-06-22 |  |
-| **[Multi-Granularity Reasoning for Natural Language Inference](https://arxiv.org/abs/2606.05181v2)** | 2026-06-22 |  |
 
 ## Serving
 | **Title** | **Date** | **Comment** |
 | --- | --- | --- |
+| **[Geometry-Aware Online Scheduling for LLM Serving: From Theoretical Bound to System Practice](https://arxiv.org/abs/2606.22327v2)** | 2026-06-24 |  |
+| **[SplitZip: Ultra Fast Lossless KV Compression for Disaggregated LLM Serving](https://arxiv.org/abs/2605.01708v3)** | 2026-06-23 |  |
 | **[CrossPool: Efficient Multi-LLM Serving for Cold MoE Models through KV-Cache and Weight Disaggregation](https://arxiv.org/abs/2606.24506v1)** | 2026-06-23 |  |
 | **[The Serialized Bridge: Understanding and Recovering LLM Serving Performance under Blackwell GPU Confidential Computing](https://arxiv.org/abs/2606.23969v1)** | 2026-06-22 |  |
 | **[VoltanaLLM: Energy-Efficient and SLO-Aware Disaggregated LLM Serving via Adaptive Frequency Control and State-Space Routing](https://arxiv.org/abs/2509.04827v3)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted by ISC High Performance 2026: https://ieeexplore.ieee.org/abstract/document/11520495/</p></details> |
 | **[LiveServe: Interaction-Aware Serving for Real-Time Omni-Modal LLMs](https://arxiv.org/abs/2606.22983v1)** | 2026-06-22 |  |
 | **[RouterWise: Joint Resource Allocation and Routing for Latency-Aware Multi-Model LLM Serving](https://arxiv.org/abs/2604.10907v2)** | 2026-06-22 |  |
-| **[Geometry-Aware Online Scheduling for LLM Serving: From Theoretical Bound to System Practice](https://arxiv.org/abs/2606.22327v1)** | 2026-06-21 |  |
 | **[Load Testing for Machine Learning Model Serving Systems at Scale](https://arxiv.org/abs/2606.22013v1)** | 2026-06-20 | <details><summary>The p...</summary><p>The paper is accepted at ECSA 2026</p></details> |
 | **[WiSP: A Working-Set View of Mixture-of-Experts Serving on Extremely Low-Resource Hardware](https://arxiv.org/abs/2606.21868v1)** | 2026-06-20 | <details><summary>18 pa...</summary><p>18 pages, 6 figures, 9 tables. Preprint, work in progress</p></details> |
 | **[AGENTSERVESIM: A Hardware-aware Simulator for Multi-Turn LLM Agent Serving](https://arxiv.org/abs/2606.09613v2)** | 2026-06-18 | Preprint |
@@ -172,11 +173,14 @@ labels: documentation
 | **[ProServe: Unified Multi-Priority Request Scheduling for LLM Serving](https://arxiv.org/abs/2512.12928v2)** | 2026-06-12 | 17 pages |
 | **[GF-DiT: Scheduling Parallelism for Diffusion Transformer Serving](https://arxiv.org/abs/2606.13501v1)** | 2026-06-11 |  |
 | **[Prism: Cost-Efficient Multi-LLM Serving via GPU Memory Ballooning](https://arxiv.org/abs/2505.04021v3)** | 2026-06-10 | OSDI'26 |
-| **[Characterizing Software Aging in GPU-Based LLM Serving Systems](https://arxiv.org/abs/2606.11916v1)** | 2026-06-10 | 7 pages |
 
 ## Quantization
 | **Title** | **Date** | **Comment** |
 | --- | --- | --- |
+| **[Hierarchical Reinforcement Learning for Neural Network Compression (HiReLC): Pruning and Quantization](https://arxiv.org/abs/2606.26002v1)** | 2026-06-24 |  |
+| **[Quantization Inflates Reasoning: Token Inflation as a Hidden Cost of Low-Bit Reasoning Models](https://arxiv.org/abs/2606.25519v1)** | 2026-06-24 |  |
+| **[Modulo Quantization Coding for Primitive Relay and Diamond Channels with Correlated Noises](https://arxiv.org/abs/2606.22313v2)** | 2026-06-24 | <details><summary>35 pa...</summary><p>35 pages, 10 figures, submitted to IEEE Transactions on Information Theory</p></details> |
+| **[Neural Network Quantization by Learning Low-Loss Subspaces](https://arxiv.org/abs/2606.25087v1)** | 2026-06-23 | 30 pages, 7 figures |
 | **[RoPE-Aware Bit Allocation for KV-Cache Quantization](https://arxiv.org/abs/2606.24033v1)** | 2026-06-23 | <details><summary>Prepr...</summary><p>Preprint. Code available at https://github.com/JIA-Lab-research/blockgtq</p></details> |
 | **[Bitwise Systolic Array Architecture for Runtime-Reconfigurable Multi-precision Quantized Multiplication on Hardware Accelerators](https://arxiv.org/abs/2602.23334v2)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted at ISQED 2025. RTL source code, Vivado projects, and packaged Vivado IPs are available at: https://github.com/liuyh-Horizon/BitSys</p></details> |
 | **[GRINQH: Graded Input-based Quantization Hierarchy for Efficient LLM Generation](https://arxiv.org/abs/2606.23419v1)** | 2026-06-22 |  |
@@ -188,7 +192,6 @@ labels: documentation
 | **[On-the-Fly Adaptation to Quantization: Configuration-Aware LoRA for Efficient Fine-Tuning of Quantized LLMs](https://arxiv.org/abs/2509.25214v4)** | 2026-06-22 |  |
 | **[LUQ: Layerwise Ultra-Low Bit Quantization for Multimodal Large Language Models](https://arxiv.org/abs/2509.23729v3)** | 2026-06-22 | <details><summary>Publi...</summary><p>Published in Transactions on Machine Learning Research (2026)</p></details> |
 | **[ARP: Enhancing Quantized Skill Abstractions via Visual Alignment and Iterative Refinement for Robotic Manipulation](https://arxiv.org/abs/2606.22480v1)** | 2026-06-21 |  |
-| **[Modulo Quantization Coding for Primitive Relay and Diamond Channels with Correlated Noises](https://arxiv.org/abs/2606.22313v1)** | 2026-06-21 | <details><summary>35 pa...</summary><p>35 pages, 10 figures, submitted to IEEE Transactions on Information Theory</p></details> |
 | **[Toward Multi-Domain and Long-Tailed Quantization via Feature Alignment and Scaling](https://arxiv.org/abs/2606.04920v3)** | 2026-06-21 | <details><summary>Withd...</summary><p>Withdrawn by the submitter because the manuscript was submitted prematurely and requires further revision and final author/contributor approval</p></details> |
 | **[Efficient Document Tampering Localization with Multi-Level Discrepancy Features and Unified DCT-Quantization Embedding](https://arxiv.org/abs/2606.22285v1)** | 2026-06-21 | <details><summary>Accep...</summary><p>Accepted to ECCV 2026</p></details> |
 | **[On the Expressive Power of Weight Quantization in Large Language Models](https://arxiv.org/abs/2606.22249v1)** | 2026-06-20 |  |
@@ -204,14 +207,18 @@ labels: documentation
 | **[SPINE: A Fault Injection Profiler for Quantized Neural Networks under Accumulated Faults](https://arxiv.org/abs/2606.19526v1)** | 2026-06-17 | <details><summary>ACM/I...</summary><p>ACM/IEEE/SBC/SBMICRO Symposium on Integrated Circuits and Systems Design 2026</p></details> |
 | **[HeRo-Q: A General Framework for Stable Low Bit Quantization via Hessian Conditioning](https://arxiv.org/abs/2601.21626v2)** | 2026-06-17 |  |
 | **[Quantization Meets Spikes: Nearly Lossless Conversion at the First Timestep via Polarity Multi-Spike Mapping](https://arxiv.org/abs/2508.14520v2)** | 2026-06-17 | 17 pages, 7 figures |
-| **[Holographic Integrated Sensing and Communication With Limited Radiation Amplitudes: How Many Quantization Bits Are Enough?](https://arxiv.org/abs/2606.18456v1)** | 2026-06-16 | 5 pages. 4 figures |
-| **[Ternary Mamba: Grouped Quantization-Aware Training of W1.58A16 State Space Models](https://arxiv.org/abs/2606.18114v1)** | 2026-06-16 |  |
-| **[Price of metric universality in vector quantization is at most 0.11 bit](https://arxiv.org/abs/2602.05790v2)** | 2026-06-15 | 41 page, 1 figure |
 
 ## RL
 | **Title** | **Date** | **Comment** |
 | --- | --- | --- |
-| **[Accelerating Disaggregated RL for Visual Generative LLMs with Diffusion-Based Parallelism and Trainer-Assisted Generation](https://arxiv.org/abs/2606.24369v1)** | 2026-06-23 | <details><summary>14 pa...</summary><p>14 pages, 18 figures, 1 table</p></details> |
+| **[Improving Zero-Shot Offline RL via Behavioral Task Sampling](https://arxiv.org/abs/2604.25496v2)** | 2026-06-24 | ICML 2026 |
+| **[daVinci-kernel: Co-Evolving Skill Selection, Summarization, and Utilization via RL for GPU Kernel Optimization](https://arxiv.org/abs/2606.16497v2)** | 2026-06-24 |  |
+| **[Accelerating Disaggregated RL for Visual Generative LLMs with Diffusion-Based Parallelism and Trainer-Assisted Generation](https://arxiv.org/abs/2606.24369v2)** | 2026-06-24 | <details><summary>Withd...</summary><p>Withdrawn by the authors pending resolution of intellectual property and institutional disclosure requirements</p></details> |
+| **[FBOS-RL: Feedback-Driven Bi-Objective Synergistic Reinforcement Learning](https://arxiv.org/abs/2605.20256v2)** | 2026-06-24 |  |
+| **[RARM: Confidence-Gated Progress Reward Modeling for RL in Manipulation](https://arxiv.org/abs/2606.22027v2)** | 2026-06-24 |  |
+| **[RGB: RL Guided Whole-Body MPPI for Humanoid Control](https://arxiv.org/abs/2606.25123v1)** | 2026-06-23 | 7pages |
+| **[Bias-Controlled Primal-Dual Natural Actor-Critic: Optimal Rates for Constrained Multi-Objective Average-Reward RL](https://arxiv.org/abs/2606.25012v1)** | 2026-06-23 |  |
+| **[Geo-Strat-RL: Learning Geological Event Reasoning from Verifiable Tasks](https://arxiv.org/abs/2606.25000v1)** | 2026-06-23 | 21 pages, 8 figures |
 | **[Learning Process Rewards via Success Visitation Matching for Efficient RL](https://arxiv.org/abs/2606.23640v1)** | 2026-06-22 |  |
 | **[dVLA-RL: Reinforcement Learning over Denoising Trajectories for Discrete Diffusion Vision-Language-Action Models](https://arxiv.org/abs/2606.23623v1)** | 2026-06-22 |  |
 | **[Enhancing RL Generalizability in Robotics through SHAP Analysis of Algorithms and Hyperparameters](https://arxiv.org/abs/2605.02867v2)** | 2026-06-22 | <details><summary>16 pa...</summary><p>16 pages, 7 figures, accepted by ICPR 2026</p></details> |
@@ -219,7 +226,6 @@ labels: documentation
 | **[Don't Tell the Answer, Truly Guide the Reasoning During RL Rollouts](https://arxiv.org/abs/2510.09388v2)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted to Findings of ACL 2026. 19 pages</p></details> |
 | **[The Optimal Token Baseline: Variance Reduction for Long-Horizon LLM-RL](https://arxiv.org/abs/2602.07078v2)** | 2026-06-21 |  |
 | **[VRPO: Rethinking Value Modeling for Robust RL under Noisy Supervision in LLM Post-Training](https://arxiv.org/abs/2508.03058v2)** | 2026-06-20 |  |
-| **[RARM: Confidence-Gated Progress Reward Modeling for RL in Manipulation](https://arxiv.org/abs/2606.22027v1)** | 2026-06-20 |  |
 | **[GAC: Stabilizing Asynchronous RL Training for LLMs via Gradient Alignment Control](https://arxiv.org/abs/2603.01501v2)** | 2026-06-19 |  |
 | **[Vero: An Open RL Recipe for General Visual Reasoning](https://arxiv.org/abs/2604.04917v3)** | 2026-06-18 | <details><summary>Proje...</summary><p>Project page: https://vero-reasoning.github.io/</p></details> |
 | **[STAR: SpatioTemporal Adaptive Reward Allocation for Text-to-Image RL Post-Training](https://arxiv.org/abs/2606.17979v2)** | 2026-06-18 |  |
@@ -235,46 +241,40 @@ labels: documentation
 | **[LLMZero: Discovering Adaptive Training Strategies for RL Post-Training via LLM Agents](https://arxiv.org/abs/2606.18388v1)** | 2026-06-16 |  |
 | **[WAM-RL: World-Action Model Reinforcement Learning with Reconstruction Rewards and Online Video SFT](https://arxiv.org/abs/2606.17906v1)** | 2026-06-16 |  |
 | **[Dynamic Rollout Editing for Reducing Overthinking in RL-Trained Reasoning Models](https://arxiv.org/abs/2606.17890v1)** | 2026-06-16 | <details><summary>21 pa...</summary><p>21 pages, 10 figures, 2 tables</p></details> |
-| **[From Trainee to Trainer: LLM-Designed Training Environment for RL with Multi-Agent Reasoning](https://arxiv.org/abs/2606.17682v1)** | 2026-06-16 |  |
-| **[Infant Spontaneous Movement Noise Improves Exploration in Deep RL](https://arxiv.org/abs/2606.16590v2)** | 2026-06-16 | <details><summary>6 pag...</summary><p>6 pages, 4 figures, 1 table. Accepted at IEEE ICDL 2026. Cite as: F. M. López, M. R. Ernst, F. Cruz, M. Hoffmann, and J. Triesch, "Infant Spontaneous Movement Noise Improves Exploration in Deep RL", in 2026 IEEE International Conference on Development and Learning (ICDL). IEEE, 2026, pp. 1-6</p></details> |
-| **[Ensemble RL through Classifier Models: Enhancing Risk-Return Trade-offs in Trading Strategies](https://arxiv.org/abs/2502.17518v3)** | 2026-06-16 | <details><summary>23 pa...</summary><p>23 pages,10 figures, 9 table</p></details> |
-| **[Context-Aware RL for Agentic and Multimodal LLMs](https://arxiv.org/abs/2606.17053v1)** | 2026-06-15 | 29 pages, 9 figures |
-| **[Hierarchical Advantage Weighting for Online RL Fine-Tuning of VLAs from Sparse Episode Outcomes](https://arxiv.org/abs/2606.17043v1)** | 2026-06-15 | <details><summary>Websi...</summary><p>Website: https://acerobotics-vla.github.io/HABC-Website</p></details> |
-| **[ExpRL: Exploratory RL for LLM Mid-Training](https://arxiv.org/abs/2606.17024v1)** | 2026-06-15 |  |
 
 ## Diffusion
 | **Title** | **Date** | **Comment** |
 | --- | --- | --- |
+| **[G2DP: Diffusion Planning with Spatio-Temporal Grid Guidance](https://arxiv.org/abs/2606.26017v1)** | 2026-06-24 |  |
+| **[HaineiFRDM: Structure-Preserving Diffusion for Film Restoration under Fast Motion and Diverse Defects](https://arxiv.org/abs/2512.24946v3)** | 2026-06-24 |  |
+| **[Approximate Structured Diffusion for Sequence Labelling](https://arxiv.org/abs/2606.18856v2)** | 2026-06-24 |  |
+| **[Stage-Aware and Roughness-Constrained Diffusion Policy for Multi-Stage Robotic Polishing](https://arxiv.org/abs/2606.25754v1)** | 2026-06-24 |  |
+| **[Point Cloud Diffusion with Global and Local Reconstruction for Instance-Level 3D Anomaly Detection](https://arxiv.org/abs/2606.25740v1)** | 2026-06-24 |  |
+| **[Delving into Latent Spectral Biasing of Video VAEs for Superior Diffusability](https://arxiv.org/abs/2512.05394v2)** | 2026-06-24 |  |
+| **[UniTeD: Unified Temporal Diffusion for Joint Perception and Planning in Autonomous Driving](https://arxiv.org/abs/2606.25736v1)** | 2026-06-24 | Accept to ECCV 2026 |
+| **[Joycent: Diffusion-based Accent TTS without Accented Phone Prediction](https://arxiv.org/abs/2606.16417v3)** | 2026-06-24 |  |
+| **[TensorLDM: A Component-Wise Latent Diffusion Model for Volumetric DTI Reconstruction from Sparse DWIs](https://arxiv.org/abs/2606.25545v1)** | 2026-06-24 |  |
+| **[Accelerating Disaggregated RL for Visual Generative LLMs with Diffusion-Based Parallelism and Trainer-Assisted Generation](https://arxiv.org/abs/2606.24369v2)** | 2026-06-24 | <details><summary>Withd...</summary><p>Withdrawn by the authors pending resolution of intellectual property and institutional disclosure requirements</p></details> |
+| **[Spatio-Temporal Mixture-of-Modality-Experts Diffusion for Quantitative DCE-MRI Synthesis from Incomplete MR Sequences](https://arxiv.org/abs/2606.25535v1)** | 2026-06-24 |  |
+| **[TIDAL: Temporally Interleaved Diffusion and Action Loop for High-Frequency VLA Control](https://arxiv.org/abs/2601.14945v2)** | 2026-06-24 |  |
+| **[From Uncertain to Safe: Conformal Adaptation of Diffusion Models for Safe PDE Control](https://arxiv.org/abs/2502.02205v4)** | 2026-06-24 | <details><summary>ICML ...</summary><p>ICML 2025. 24 pages, 5 figures</p></details> |
+| **[Asymptotic Learning Curves for Diffusion Models with Random Features Score and Manifold Data](https://arxiv.org/abs/2603.22962v3)** | 2026-06-24 | <details><summary>Added...</summary><p>Added proof of Claim 1 in a restricted setting</p></details> |
+| **[Causal-rCM: A Unified Teacher-Forcing and Self-Forcing Open Recipe for Autoregressive Diffusion Distillation in Streaming Video Generation and Interactive World Models](https://arxiv.org/abs/2606.25473v1)** | 2026-06-24 | Technical Report |
+| **[Streaming-dLLM: Accelerating Diffusion LLMs via Suffix Pruning and Dynamic Decoding](https://arxiv.org/abs/2601.17917v3)** | 2026-06-24 | <details><summary>Tech ...</summary><p>Tech report. Code is available at https://github.com/xiaoshideta/Streaming-dLLM</p></details> |
+| **[Adaptive Oscillatory Inductive Bias for Modeling Sharp Prosodic Dynamics in Diffusion-Based TTS](https://arxiv.org/abs/2606.25424v1)** | 2026-06-24 | <details><summary>Accep...</summary><p>Accepted in INTERSPEECH 2026</p></details> |
+| **[Anatomically-conditioned Latent Diffusion Model for Data-Efficient Few-Shot Cross-Domain 3D Glioma MRI Synthesis](https://arxiv.org/abs/2606.25390v1)** | 2026-06-24 | <details><summary>Publi...</summary><p>Published in Canadian AI 2026</p></details> |
+| **[Improved Large Language Diffusion Models](https://arxiv.org/abs/2606.25331v1)** | 2026-06-24 |  |
+| **[DRM: Diffusion-based Reward Model With Step-wise Guidance](https://arxiv.org/abs/2605.25661v2)** | 2026-06-24 |  |
+| **[Cross-Modality Structural Guidance in 3D Latent Diffusion for Robust FLAIR Super-Resolution](https://arxiv.org/abs/2606.25255v1)** | 2026-06-24 |  |
 | **[DiffusionBench: On Holistic Evaluation of Diffusion Transformers](https://arxiv.org/abs/2606.24888v1)** | 2026-06-23 |  |
 | **[FLUX3D: High-Fidelity 3D Gaussian Generation with Diffusion-Aligned Sparse Representation](https://arxiv.org/abs/2606.24874v1)** | 2026-06-23 |  |
 | **[High-Fidelity Synthetic Transmission Electron Microscopy Image Generation Using Diffusion Probabilistic Models for Data-Limited Semiconductor Metrology](https://arxiv.org/abs/2606.24817v1)** | 2026-06-23 | <details><summary>To be...</summary><p>To be presented at the 2026 International Symposium ELMAR, published by IEEE in the conference proceedings</p></details> |
+| **[Contrastive Conditional-Unconditional Alignment for Long-tailed Diffusion Model](https://arxiv.org/abs/2507.09052v3)** | 2026-06-23 | 20 pages, 11 figures |
+| **[Latent Block-Diffusion Temporal Point Processes: A Semi-Autoregressive Framework for Asynchronous Event Sequence Generation](https://arxiv.org/abs/2606.24982v1)** | 2026-06-23 |  |
 | **[HilDA: Hierarchical Distillation with Diffusion for Advancing Self-Supervised LiDAR Pre-training](https://arxiv.org/abs/2606.20189v3)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted to ECCV 2026. Maciej and Jesper contributed equally</p></details> |
 | **[EMFusion: Uncertainty-Aware Conditional Diffusion Model for Multivariate Narrow-band Exposure Forecasting](https://arxiv.org/abs/2512.15067v4)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted in IEEE Transactions on Network Science and Engineering</p></details> |
 | **[D3Seg: Dependency-Aware Diffusion for Brain Tumor Segmentation with Missing Modalities](https://arxiv.org/abs/2605.22249v2)** | 2026-06-23 |  |
-| **[Accelerating Disaggregated RL for Visual Generative LLMs with Diffusion-Based Parallelism and Trainer-Assisted Generation](https://arxiv.org/abs/2606.24369v1)** | 2026-06-23 | <details><summary>14 pa...</summary><p>14 pages, 18 figures, 1 table</p></details> |
 | **[Prob-BBDM: a Probabilistic Brownian Bridge Diffusion Model for MRI sequence image-to-image translation](https://arxiv.org/abs/2606.24313v1)** | 2026-06-23 |  |
-| **[CMADiff: Cross-Modal Aligned Diffusion for Controllable Protein Generation](https://arxiv.org/abs/2503.21450v4)** | 2026-06-23 |  |
-| **[Emotion Diffusion Classifier with Adaptive Margin Discrepancy Training for Facial Expression Recognition](https://arxiv.org/abs/2603.29578v2)** | 2026-06-23 |  |
-| **[Prediction of spatio-temporal data on meshed surfaces using advection-diffusion SPDEs](https://arxiv.org/abs/2606.24300v1)** | 2026-06-23 |  |
-| **[Diffusion Integrated Gradients: Controllable Path Generation for Flexible Feature Attribution](https://arxiv.org/abs/2606.22314v2)** | 2026-06-23 | <details><summary>44 pa...</summary><p>44 pages, 22 figures, 10 tables. Accepted to ECCV 2026; includes appendix</p></details> |
-| **[Grounding Generative Policies in Physics: Optimization-Guided Diffusion for Robot Control](https://arxiv.org/abs/2606.24208v1)** | 2026-06-23 |  |
-| **[Co-occurring associated retained concepts in Diffusion Unlearning](https://arxiv.org/abs/2606.24192v1)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted as a poster at ICLR 2026. Code available at https://github.com/damilab/CARE</p></details> |
-| **[ZeroGVC: Zero-Shot Generative Video Compression with Autoregressive Diffusion Priors](https://arxiv.org/abs/2606.22371v2)** | 2026-06-23 |  |
-| **[ParallelBench: Understanding the Trade-offs of Parallel Decoding in Diffusion LLMs](https://arxiv.org/abs/2510.04767v2)** | 2026-06-23 | <details><summary>Accep...</summary><p>Accepted at ICLR 2026. Project Page: https://parallelbench.github.io</p></details> |
-| **[Dual-Branch Cross-Projection Debiasing through Diffusion-based Disentanglement](https://arxiv.org/abs/2606.24161v1)** | 2026-06-23 |  |
-| **[The Geometry Behind Diffusion and Flow Matching: Gradient Flows and Geodesics in Wasserstein Space](https://arxiv.org/abs/2606.24157v1)** | 2026-06-23 |  |
-| **[When Top-1 Fails: Calibrating LoRA Monitors for Masked Diffusion LMs](https://arxiv.org/abs/2606.24119v1)** | 2026-06-23 | <details><summary>14 pa...</summary><p>14 pages, 3 figures. Code and result artifacts: https://github.com/lucky-verma/top1-fails-dlm-lora-monitors</p></details> |
-| **[Cyclic Denoising Reveals Ultrastable Memories in Diffusion Models](https://arxiv.org/abs/2606.24000v1)** | 2026-06-22 | <details><summary>22 pa...</summary><p>22 pages, 7 main figures; supplementary material included. Supplementary movies available at the project webpage</p></details> |
-| **[Teaching Diffusion to Speculate Left-to-Right](https://arxiv.org/abs/2606.11552v2)** | 2026-06-22 | <details><summary>13 pa...</summary><p>13 pages, technical report</p></details> |
-| **[Catastrophic Compositional Generation: Why Vanilla Diffusion Models Fail to Extrapolate](https://arxiv.org/abs/2606.23920v1)** | 2026-06-22 |  |
-| **[ARIA: Adaptive Region-Based Importance Allocation for Conditional Diffusion Distillation](https://arxiv.org/abs/2606.23898v1)** | 2026-06-22 | 26 pages, 11 figures |
-| **[Diffusion Models Adapt to Low-Dimensional Structure Under Flexible Coefficient Choices](https://arxiv.org/abs/2606.23627v1)** | 2026-06-22 |  |
-| **[dVLA-RL: Reinforcement Learning over Denoising Trajectories for Discrete Diffusion Vision-Language-Action Models](https://arxiv.org/abs/2606.23623v1)** | 2026-06-22 |  |
-| **[Vera: A Layered Diffusion Model for Content-Preserving Video Editing](https://arxiv.org/abs/2606.23610v1)** | 2026-06-22 | <details><summary>https...</summary><p>https://vera-layered-diffusion.github.io/</p></details> |
-| **[Controllable Accent Normalization via Discrete Diffusion](https://arxiv.org/abs/2603.14275v2)** | 2026-06-22 | <details><summary>Accep...</summary><p>Accepted to Interspeech 2026 as a long paper</p></details> |
-| **[Diffusion Language Models: An Experimental Analysis](https://arxiv.org/abs/2606.19475v2)** | 2026-06-22 |  |
-| **[Scheduling Thoughts: Learning the Order of Thought in Diffusion Language Models](https://arxiv.org/abs/2606.23567v1)** | 2026-06-22 |  |
-| **[Iterative Diffusion-Refined Neural Attenuation Fields for Multi-Source Stationary CT Reconstruction: NAF Meets Diffusion Model](https://arxiv.org/abs/2511.14310v2)** | 2026-06-22 |  |
 
 ## DIT
 | **Title** | **Date** | **Comment** |
