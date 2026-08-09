@@ -108,10 +108,15 @@ def generate_table(papers: List[Dict[str, str]], ignore_keys: List[str] = []) ->
             elif key == "Comment":
                 if paper[key] == "":
                     formatted_paper[key] = ""
-                elif len(paper[key]) > 20:
-                    formatted_paper[key] = "<details><summary>{0}...</summary><p>{1}</p></details>".format(paper[key][:5], paper[key])
                 else:
-                    formatted_paper[key] = paper[key]
+                    comment = paper[key]
+                    max_comment_length = 500
+                    if len(comment) > max_comment_length:
+                        comment = comment[:max_comment_length].rstrip() + "..."
+                    if len(comment) > 20:
+                        formatted_paper[key] = "<details><summary>{0}...</summary><p>{1}</p></details>".format(comment[:5], comment)
+                    else:
+                        formatted_paper[key] = comment
         formatted_papers.append(formatted_paper)
 
     # generate header
