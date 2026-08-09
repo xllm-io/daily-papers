@@ -9,6 +9,9 @@ import urllib, urllib.request
 import feedparser
 from easydict import EasyDict
 
+MAX_COMMENT_LENGTH = 500
+COMMENT_SUMMARY_LENGTH = 50
+
 
 def remove_duplicated_spaces(text: str) -> str:
     return " ".join(text.split())
@@ -110,11 +113,11 @@ def generate_table(papers: List[Dict[str, str]], ignore_keys: List[str] = []) ->
                     formatted_paper[key] = ""
                 else:
                     comment = paper[key]
-                    max_comment_length = 500
-                    if len(comment) > max_comment_length:
-                        comment = comment[:max_comment_length].rstrip() + "..."
+                    is_truncated = len(comment) > MAX_COMMENT_LENGTH
+                    if is_truncated:
+                        comment = comment[:MAX_COMMENT_LENGTH].rstrip() + " [truncated]"
                     if len(comment) > 20:
-                        formatted_paper[key] = "<details><summary>{0}...</summary><p>{1}</p></details>".format(comment[:5], comment)
+                        formatted_paper[key] = "<details><summary>{0}...</summary><p>{1}</p></details>".format(comment[:COMMENT_SUMMARY_LENGTH], comment)
                     else:
                         formatted_paper[key] = comment
         formatted_papers.append(formatted_paper)
