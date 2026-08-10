@@ -41,12 +41,15 @@ The GitHub Actions workflow in `.github/workflows/update.yaml` runs `main.py` au
 - **Link strategy**: keywords with a single word use `AND` (must appear in both title and abstract); multi-word keywords use `OR`.
 - **Author display**: only the first author is shown, formatted as `"Name et al."`.
 - **Date handling**: the raw arXiv `updated` field (`2021-08-01T00:00:00Z`) is stripped to `YYYY-MM-DD` in the table.
-- **Safety on failure**: if any keyword returns no papers after retries, the script restores the backed-up files from `.bk` and exits with code 1, leaving the repo unchanged.
+- **Safety on failure**: `_BackupManager` context manager ensures original files are restored if any keyword fails — the commit is rolled back automatically.
+- **Retry logic**: up to 6 retries per keyword with 60s delay. Network errors (`URLError`) and empty results are handled separately in logs.
+- **Timeout**: arXiv API calls have a 30-second timeout to prevent hanging.
 
 ## Common Tasks
 
 - **Add a new keyword**: edit `config.py` and append to the `keywords` list.
-- **Change result counts**: adjust `max_result` (README, default 50) or `issues_result` (issue body, default 20 — keep low enough that 13 keywords × `issues_result` × ~205 chars/row stays under GitHub's 65,536-char limit).
+- **Change result counts**: adjust `max_result` (README, default 50) or `issues_result` (issue body, default 20) in `config.py`. Keep `issues_result` low enough that `13 × issues_result × ~205 chars/row < 65,536`.
 - **Change displayed columns**: modify `column_names` in `config.py`.
-- **Filter by additional tags**: extend the `target_fileds` list in `utils.py`'s `filter_tags()`.
-- **Run tests**: `python test.py` runs a smoke test that queries the arXiv API for the "Sparse Attention" keyword and writes a debug `res.json` file. No assertions — it's a connectivity check.
+- **Adjust retry behavior**: modify `MAX_RETRIES` and `RETRY_DELAY` in `config.py`.
+- **Adjust API delay**: modify `API_DELAY` in `config.py` (default 5s between keywords).
+- **Run tests**: `python test.py` runs a connectivity smoke test against the arXiv API.
