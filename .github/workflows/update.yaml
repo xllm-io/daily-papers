@@ -10,17 +10,17 @@ on:
 
 permissions:
   contents: write
-  issues: write 
+  issues: write
 
 jobs:
   update_daily_papers:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.9'
 
@@ -32,15 +32,13 @@ jobs:
         python main.py
 
     - name: Commit and push changes
-      uses: github-actions-x/commit@v2.9
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        push-branch: 'main'
-        commit-message: '✏️ Update papers automatically.'
-        force-add: 'true'
-        files: README.md .github/ISSUE_TEMPLATE.md
-        name: zhangjun
-        email: ewalker@live.cn
+        commit_message: '✏️ Update papers automatically.'
+        push_options: '--force'
+        file_pattern: README.md .github/ISSUE_TEMPLATE.md
+        commit_user_name: zhangjun
+        commit_user_email: ewalker@live.cn
 
     - name: Create an issue to notify
       uses: JasonEtco/create-an-issue@v2
