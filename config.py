@@ -11,7 +11,7 @@ keywords = ["KV Cache", "Sparse Attention", "Training", "Inference", "Serving", 
 max_result = 50
 
 # Maximum papers to be included in the issue
-issues_result = 30
+issues_result = 20
 
 # Output file names
 readme_file = "README.md"
