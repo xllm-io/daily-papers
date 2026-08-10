@@ -8,67 +8,62 @@
 import sys
 import time
 import logging
-import pytz
 from datetime import datetime
+
+from config import (
+    keywords, max_result, issues_result,
+    readme_file, issue_template_file, column_names,
+    API_DELAY,
+)
+from utils import (
+    get_daily_papers_by_keyword_with_retries,
+    generate_table,
+    get_daily_date,
+    _BackupManager,
+    beijing_tz,
+)
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
-from config import keywords, max_result, issues_result, readme_file, issue_template_file, column_names
-from utils import get_daily_papers_by_keyword_with_retries, generate_table, back_up_files,\
-    restore_files, remove_backups, get_daily_date
+current_date = datetime.now(beijing_tz).strftime("%Y-%m-%d")
+logger.info("Current date (Beijing): %s", current_date)
 
+with _BackupManager(readme_file, issue_template_file):
+    with open(readme_file, "w") as f_rm, open(issue_template_file, "w") as f_is:
+        f_rm.write(
+            "# Daily Papers\n"
+            "The project automatically fetches the latest papers from arXiv based on keywords.\n\n"
+            "The subheadings in the README file represent the search keywords.\n\n"
+            "Only the most recent articles for each keyword are retained, "
+            "up to a maximum of 100 papers.\n\n"
+            "You can click the 'Watch' button to receive daily email notifications.\n\n"
+            f"Last update: {current_date}\n\n"
+        )
+        f_is.write(
+            "---\n"
+            f"title: Latest {issues_result} Papers - {get_daily_date()}\n"
+            "labels: documentation\n"
+            "---\n"
+            "**Please check the [Github](https://github.com/zezhishao/MTS_Daily_ArXiv) "
+            "page for a better reading experience and more papers.**\n\n"
+        )
 
-beijing_timezone = pytz.timezone('Asia/Shanghai')
+        for keyword in keywords:
+            logger.info("Processing keyword: %s", keyword)
+            f_rm.write(f"## {keyword}\n")
+            f_is.write(f"## {keyword}\n")
 
-# NOTE: arXiv API seems to sometimes return an unexpected empty list.
+            link = "AND" if len(keyword.split()) == 1 else "OR"
+            papers = get_daily_papers_by_keyword_with_retries(keyword, column_names, max_result, link)
+            if papers is None:
+                logger.error("Failed to get papers for keyword '%s'!", keyword)
+                sys.exit(1)
 
-# get current beijing time date in the format of "2021-08-01"
-current_date = datetime.now(beijing_timezone).strftime("%Y-%m-%d")
-# get last update date from README.md
-with open(readme_file, "r") as f:
-    while True:
-        line = f.readline()
-        if "Last update:" in line: break
-    last_update_date = line.split(": ")[1].strip()
-    # if last_update_date == current_date:
-        # sys.exit("Already updated today!")
+            f_rm.write(generate_table(papers))
+            f_rm.write("\n\n")
+            f_is.write(generate_table(papers[:issues_result], ignore_keys=["Abstract"]))
+            f_is.write("\n\n")
+            time.sleep(API_DELAY)
 
-back_up_files(readme_file, issue_template_file) # back up README.md and ISSUE_TEMPLATE.md
-
-# write to README.md
-f_rm = open(readme_file, "w") # file for README.md
-f_rm.write("# Daily Papers\n")
-f_rm.write("The project automatically fetches the latest papers from arXiv based on keywords.\n\nThe subheadings in the README file represent the search keywords.\n\nOnly the most recent articles for each keyword are retained, up to a maximum of 100 papers.\n\nYou can click the 'Watch' button to receive daily email notifications.\n\nLast update: {0}\n\n".format(current_date))
-
-# write to ISSUE_TEMPLATE.md
-f_is = open(issue_template_file, "w") # file for ISSUE_TEMPLATE.md
-f_is.write("---\n")
-f_is.write("title: Latest {0} Papers - {1}\n".format(issues_result, get_daily_date()))
-f_is.write("labels: documentation\n")
-f_is.write("---\n")
-f_is.write("**Please check the [Github](https://github.com/zezhishao/MTS_Daily_ArXiv) page for a better reading experience and more papers.**\n\n")
-
-for keyword in keywords:
-    f_rm.write("## {0}\n".format(keyword))
-    f_is.write("## {0}\n".format(keyword))
-    if len(keyword.split()) == 1: link = "AND" # for keyword with only one word, We search for papers containing this keyword in both the title and abstract.
-    else: link = "OR"
-    papers = get_daily_papers_by_keyword_with_retries(keyword, column_names, max_result, link)
-    if papers is None:  # failed to get papers
-        logger.error("Failed to get papers for keyword '%s'!", keyword)
-        f_rm.close()
-        f_is.close()
-        restore_files(readme_file, issue_template_file)
-        sys.exit("Failed to get papers!")
-    rm_table = generate_table(papers)
-    is_table = generate_table(papers[:issues_result], ignore_keys=["Abstract"])
-    f_rm.write(rm_table)
-    f_rm.write("\n\n")
-    f_is.write(is_table)
-    f_is.write("\n\n")
-    time.sleep(5) # avoid being blocked by arXiv API
-
-f_rm.close()
-f_is.close()
-remove_backups(readme_file, issue_template_file)
+logger.info("Daily papers update completed successfully.")

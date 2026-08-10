@@ -19,3 +19,14 @@ issue_template_file = ".github/ISSUE_TEMPLATE.md"
 
 # Column names to display
 column_names = ["Title", "Link", "Abstract", "Date", "Comment"]
+
+# Comment length limits
+MAX_COMMENT_LENGTH = 500
+COMMENT_SUMMARY_LENGTH = 50
+
+# ArXiv API rate-limit delay between keyword queries (seconds)
+API_DELAY = 5
+
+# Retry config
+MAX_RETRIES = 6
+RETRY_DELAY = 60  # seconds

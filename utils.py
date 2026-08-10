@@ -4,164 +4,170 @@ import logging
 import pytz
 import shutil
 import datetime
-from typing import List, Dict
-import urllib, urllib.request, urllib.error
+from typing import List, Dict, Optional
 
 import feedparser
-from easydict import EasyDict
+import urllib.request, urllib.error, urllib.parse
+
+from config import (
+    MAX_COMMENT_LENGTH, COMMENT_SUMMARY_LENGTH,
+    API_DELAY, MAX_RETRIES, RETRY_DELAY,
+)
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
-MAX_COMMENT_LENGTH = 500
-COMMENT_SUMMARY_LENGTH = 50
+beijing_tz = pytz.timezone('Asia/Shanghai')
 
 
 def remove_duplicated_spaces(text: str) -> str:
     return " ".join(text.split())
 
+
 def request_paper_with_arXiv_api(keyword: str, max_results: int, link: str = "OR") -> List[Dict[str, str]]:
-    # keyword = keyword.replace(" ", "+")
-    assert link in ["OR", "AND"], "link should be 'OR' or 'AND'"
-    keyword = "\"" + keyword + "\""
-    url = "http://export.arxiv.org/api/query?search_query=ti:{0}+{2}+abs:{0}&max_results={1}&sortBy=lastUpdatedDate".format(keyword, max_results, link)
+    assert link in ("OR", "AND"), "link should be 'OR' or 'AND'"
+    keyword = f'"{keyword}"'
+    url = (
+        f"http://export.arxiv.org/api/query"
+        f"?search_query=ti:{keyword}+{link}+abs:{keyword}"
+        f"&max_results={max_results}&sortBy=lastUpdatedDate"
+    )
     url = urllib.parse.quote(url, safe="%/:=&?~#+!$,;'@()*[]")
     logger.info("[###] keyword: %s, url: %s", keyword, url)
     response = urllib.request.urlopen(url, timeout=30).read().decode('utf-8')
     feed = feedparser.parse(response)
+    return [EasyDict(entry) for entry in feed.entries]
 
-    # NOTE default columns: Title, Authors, Abstract, Link, Tags, Comment, Date
-    papers = []
-    for entry in feed.entries:
-        entry = EasyDict(entry)
-        paper = EasyDict()
 
-        # title
-        paper.Title = remove_duplicated_spaces(entry.title.replace("\n", " "))
-        # abstract
-        paper.Abstract = remove_duplicated_spaces(entry.summary.replace("\n", " "))
-        # authors
-        paper.Authors = [remove_duplicated_spaces(_["name"].replace("\n", " ")) for _ in entry.authors]
-        # link
-        paper.Link = remove_duplicated_spaces(entry.link.replace("\n", " "))
-        # tags
-        paper.Tags = [remove_duplicated_spaces(_["term"].replace("\n", " ")) for _ in entry.tags]
-        # comment
-        paper.Comment = remove_duplicated_spaces(entry.get("arxiv_comment", "").replace("\n", " "))
-        # date
-        paper.Date = entry.updated
-
-        papers.append(paper)
-    return papers
-
-def filter_tags(papers: List[Dict[str, str]], target_fileds: List[str]=["cs", "stat"]) -> List[Dict[str, str]]:
-    # filtering tags: only keep the papers in target_fileds
+def filter_tags(
+    papers: List[Dict[str, str]],
+    target_fileds: List[str] = ("cs", "stat"),
+) -> List[Dict[str, str]]:
     results = []
     for paper in papers:
-        tags = paper.Tags
-        for tag in tags:
-            if tag.split(".")[0] in target_fileds:
-                results.append(paper)
-                break
+        if any(tag.split(".")[0] in target_fileds for tag in paper.Tags):
+            results.append(paper)
     return results
 
-def get_daily_papers_by_keyword_with_retries(keyword: str, column_names: List[str], max_result: int, link: str = "OR", retries: int = 6) -> List[Dict[str, str]]:
+
+def get_daily_papers_by_keyword(
+    keyword: str,
+    column_names: List[str],
+    max_results: int,
+    link: str = "OR",
+) -> List[Dict[str, str]]:
+    papers = request_paper_with_arXiv_api(keyword, max_results, link)
+    papers = filter_tags(papers)
+    return [
+        {col: paper[col] for col in column_names}
+        for paper in papers
+    ]
+
+
+def get_daily_papers_by_keyword_with_retries(
+    keyword: str,
+    column_names: List[str],
+    max_results: int,
+    link: str = "OR",
+    retries: int = MAX_RETRIES,
+) -> Optional[List[Dict[str, str]]]:
     for attempt in range(retries):
         try:
-            papers = get_daily_papers_by_keyword(keyword, column_names, max_result, link)
-            if len(papers) > 0:
+            papers = get_daily_papers_by_keyword(keyword, column_names, max_results, link)
+            if papers:
                 return papers
-            else:
-                logger.warning("Keyword '%s': empty result (attempt %d/%d)", keyword, attempt + 1, retries)
+            logger.warning("Keyword '%s': empty result (attempt %d/%d)", keyword, attempt + 1, retries)
         except urllib.error.URLError as e:
-            logger.warning("Keyword '%s': network error (%s), attempt %d/%d", keyword, e.reason, attempt + 1, retries)
+            logger.warning("Keyword '%s': network error (%s), attempt %d/%d",
+                           keyword, e.reason, attempt + 1, retries)
         except Exception as e:
             logger.error("Keyword '%s': unexpected error: %s", keyword, e)
         if attempt < retries - 1:
-            time.sleep(60)
+            time.sleep(RETRY_DELAY)
     logger.error("Keyword '%s': failed after %d retries", keyword, retries)
     return None
 
-def get_daily_papers_by_keyword(keyword: str, column_names: List[str], max_result: int, link: str = "OR") -> List[Dict[str, str]]:
-    # get papers
-    papers = request_paper_with_arXiv_api(keyword, max_result, link) # NOTE default columns: Title, Authors, Abstract, Link, Tags, Comment, Date
-    # NOTE filtering tags: only keep the papers in cs field
-    # TODO filtering more
-    papers = filter_tags(papers)
-    # select columns for display
-    papers = [{column_name: paper[column_name] for column_name in column_names} for paper in papers]
-    return papers
 
-def generate_table(papers: List[Dict[str, str]], ignore_keys: List[str] = []) -> str:
-    formatted_papers = []
-    keys = papers[0].keys()
+def generate_table(papers: List[Dict[str, str]], ignore_keys: List[str] = None) -> str:
+    if ignore_keys is None:
+        ignore_keys = []
+    formatted = []
     for paper in papers:
-        # process fixed columns
-        formatted_paper = EasyDict()
-        ## Title and Link
-        formatted_paper.Title = "**" + "[{0}]({1})".format(paper["Title"], paper["Link"]) + "**"
-        ## Process Date (format: 2021-08-01T00:00:00Z -> 2021-08-01)
-        formatted_paper.Date = paper["Date"].split("T")[0]
-        
-        # process other columns
-        for key in keys:
-            if key in ["Title", "Link", "Date"] or key in ignore_keys:
+        row: Dict[str, str] = {}
+        row["Title"] = f"**[{paper['Title']}]( {paper['Link']})**"
+        row["Date"] = paper["Date"].split("T")[0]
+        for key in paper:
+            if key in ("Title", "Link", "Date") or key in ignore_keys:
                 continue
-            elif key == "Abstract":
-                # add show/hide button for abstract
-                formatted_paper[key] = "<details><summary>Show</summary><p>{0}</p></details>".format(paper[key])
+            if key == "Abstract":
+                row[key] = f"<details><summary>Show</summary><p>{paper[key]}</p></details>"
             elif key == "Authors":
-                # NOTE only use the first author
-                formatted_paper[key] = paper[key][0] + " et al."
+                row[key] = f"{paper[key][0]} et al."
             elif key == "Tags":
                 tags = ", ".join(paper[key])
-                if len(tags) > 10:
-                    formatted_paper[key] = "<details><summary>{0}...</summary><p>{1}</p></details>".format(tags[:5], tags)
-                else:
-                    formatted_paper[key] = tags
+                row[key] = (
+                    f"<details><summary>{tags[:5]}...</summary><p>{tags}</p></details>"
+                    if len(tags) > 10
+                    else tags
+                )
             elif key == "Comment":
-                if paper[key] == "":
-                    formatted_paper[key] = ""
-                else:
-                    comment = paper[key]
-                    is_truncated = len(comment) > MAX_COMMENT_LENGTH
-                    if is_truncated:
-                        comment = comment[:MAX_COMMENT_LENGTH].rstrip() + " [truncated]"
+                if paper[key]:
+                    raw = paper[key]
+                    comment = (raw[:MAX_COMMENT_LENGTH].rstrip() + " [truncated]"
+                               if len(raw) > MAX_COMMENT_LENGTH
+                               else raw)
                     if len(comment) > 20:
-                        formatted_paper[key] = "<details><summary>{0}...</summary><p>{1}</p></details>".format(comment[:COMMENT_SUMMARY_LENGTH], comment)
+                        row[key] = (
+                            f"<details><summary>{comment[:COMMENT_SUMMARY_LENGTH]}...</summary>"
+                            f"<p>{comment}</p></details>"
+                        )
                     else:
-                        formatted_paper[key] = comment
-        formatted_papers.append(formatted_paper)
+                        row[key] = comment
+                else:
+                    row[key] = ""
+        formatted.append(row)
 
-    # generate header
-    columns = formatted_papers[0].keys()
-    # highlight headers
-    columns = ["**" + column + "**" for column in columns]
-    header = "| " + " | ".join(columns) + " |"
-    header = header + "\n" + "| " + " | ".join(["---"] * len(formatted_papers[0].keys())) + " |"
-    # generate the body
-    body = ""
-    for paper in formatted_papers:
-        body += "\n| " + " | ".join(paper.values()) + " |"
-    return header + body
+    columns = list(formatted[0].keys())
+    header = "| " + " | ".join(f"**{c}**" for c in columns) + " |"
+    sep = "| " + " | ".join(["---"] * len(columns)) + " |"
+    body = "\n".join("| " + " | ".join(row.values()) + " |" for row in formatted)
+    return header + "\n" + sep + "\n" + body
 
-def back_up_files(readme_file: str = "README.md", issue_template_file: str = ".github/ISSUE_TEMPLATE.md"):
-    # back up README.md and ISSUE_TEMPLATE.md
-    shutil.move(readme_file, readme_file + ".bk")
-    shutil.move(issue_template_file, issue_template_file + ".bk")
 
-def restore_files(readme_file: str = "README.md", issue_template_file: str = ".github/ISSUE_TEMPLATE.md"):
-    # restore README.md and ISSUE_TEMPLATE.md
-    shutil.move(readme_file + ".bk", readme_file)
-    shutil.move(issue_template_file + ".bk", issue_template_file)
+class _BackupManager:
+    """Safely backs up, restores, or removes files with .bk suffix."""
 
-def remove_backups(readme_file: str = "README.md", issue_template_file: str = ".github/ISSUE_TEMPLATE.md"):
-    # remove README.md and ISSUE_TEMPLATE.md
-    os.remove(readme_file + ".bk")
-    os.remove(issue_template_file + ".bk")
+    def __init__(self, *files: str):
+        self.files = files
+        self.bks = [f + ".bk" for f in files]
 
-def get_daily_date():
-    # get beijing time in the format of "March 1, 2021"
-    beijing_timezone = pytz.timezone('Asia/Shanghai')
-    today = datetime.datetime.now(beijing_timezone)
+    def _restore(self) -> None:
+        for bk, orig in zip(self.bks, self.files):
+            if os.path.exists(bk):
+                shutil.move(bk, orig)
+
+    def backup(self) -> None:
+        for f, bk in zip(self.files, self.bks):
+            if os.path.exists(f):
+                shutil.move(f, bk)
+
+    def remove(self) -> None:
+        for bk in self.bks:
+            if os.path.exists(bk):
+                os.remove(bk)
+
+    def __enter__(self) -> "_BackupManager":
+        self.backup()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb) -> bool:
+        if exc_type is not None:
+            self._restore()
+        else:
+            self.remove()
+        return False  # do not suppress exceptions
+
+
+def get_daily_date() -> str:
+    today = datetime.datetime.now(beijing_tz)
     return today.strftime("%B %d, %Y")
