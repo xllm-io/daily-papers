@@ -37,7 +37,19 @@ def request_paper_with_arXiv_api(keyword: str, max_results: int, link: str = "OR
     logger.info("[###] keyword: %s, url: %s", keyword, url)
     response = urllib.request.urlopen(url, timeout=30).read().decode('utf-8')
     feed = feedparser.parse(response)
-    return [EasyDict(entry) for entry in feed.entries]
+    papers = []
+    for entry in feed.entries:
+        entry = EasyDict(entry)
+        paper = EasyDict()
+        paper.Title = remove_duplicated_spaces(entry.title.replace("\n", " "))
+        paper.Abstract = remove_duplicated_spaces(entry.summary.replace("\n", " "))
+        paper.Authors = [remove_duplicated_spaces(a["name"].replace("\n", " ")) for a in entry.authors]
+        paper.Link = remove_duplicated_spaces(entry.link.replace("\n", " "))
+        paper.Tags = [remove_duplicated_spaces(t["term"].replace("\n", " ")) for t in entry.tags]
+        paper.Comment = remove_duplicated_spaces(entry.get("arxiv_comment", "").replace("\n", " "))
+        paper.Date = entry.updated
+        papers.append(paper)
+    return papers
 
 
 def filter_tags(
@@ -46,7 +58,7 @@ def filter_tags(
 ) -> List[Dict[str, str]]:
     results = []
     for paper in papers:
-        if any(tag.split(".")[0] in target_fileds for tag in paper.Tags):
+        if any(tag.split(".")[0] in target_fileds for tag in paper["Tags"]):
             results.append(paper)
     return results
 
