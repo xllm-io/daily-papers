@@ -7,6 +7,7 @@ import datetime
 from typing import List, Dict, Optional
 
 import feedparser
+from easydict import EasyDict
 import urllib.request, urllib.error, urllib.parse
 
 from config import (
