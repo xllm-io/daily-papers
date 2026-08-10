@@ -1,13 +1,17 @@
 import os
 import time
+import logging
 import pytz
 import shutil
 import datetime
 from typing import List, Dict
-import urllib, urllib.request
+import urllib, urllib.request, urllib.error
 
 import feedparser
 from easydict import EasyDict
+
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 MAX_COMMENT_LENGTH = 500
 COMMENT_SUMMARY_LENGTH = 50
@@ -22,8 +26,8 @@ def request_paper_with_arXiv_api(keyword: str, max_results: int, link: str = "OR
     keyword = "\"" + keyword + "\""
     url = "http://export.arxiv.org/api/query?search_query=ti:{0}+{2}+abs:{0}&max_results={1}&sortBy=lastUpdatedDate".format(keyword, max_results, link)
     url = urllib.parse.quote(url, safe="%/:=&?~#+!$,;'@()*[]")
-    print("[###] keyword: {0}, url: {1}".format(keyword, url))
-    response = urllib.request.urlopen(url).read().decode('utf-8')
+    logger.info("[###] keyword: %s, url: %s", keyword, url)
+    response = urllib.request.urlopen(url, timeout=30).read().decode('utf-8')
     feed = feedparser.parse(response)
 
     # NOTE default columns: Title, Authors, Abstract, Link, Tags, Comment, Date
@@ -62,13 +66,20 @@ def filter_tags(papers: List[Dict[str, str]], target_fileds: List[str]=["cs", "s
     return results
 
 def get_daily_papers_by_keyword_with_retries(keyword: str, column_names: List[str], max_result: int, link: str = "OR", retries: int = 6) -> List[Dict[str, str]]:
-    for _ in range(retries):
-        papers = get_daily_papers_by_keyword(keyword, column_names, max_result, link)
-        if len(papers) > 0: return papers
-        else:
-            print("Unexpected empty list, retrying...")
-            time.sleep(60 * 1) # wait for 1 minutes
-    # failed
+    for attempt in range(retries):
+        try:
+            papers = get_daily_papers_by_keyword(keyword, column_names, max_result, link)
+            if len(papers) > 0:
+                return papers
+            else:
+                logger.warning("Keyword '%s': empty result (attempt %d/%d)", keyword, attempt + 1, retries)
+        except urllib.error.URLError as e:
+            logger.warning("Keyword '%s': network error (%s), attempt %d/%d", keyword, e.reason, attempt + 1, retries)
+        except Exception as e:
+            logger.error("Keyword '%s': unexpected error: %s", keyword, e)
+        if attempt < retries - 1:
+            time.sleep(60)
+    logger.error("Keyword '%s': failed after %d retries", keyword, retries)
     return None
 
 def get_daily_papers_by_keyword(keyword: str, column_names: List[str], max_result: int, link: str = "OR") -> List[Dict[str, str]]:

@@ -1,16 +1,18 @@
-'''
-Author: zhouchanggeng
-Date: 2025-06-08 09:32:13
-LastEditTime: 2025-06-08 22:43:25
-LastEditors: zhouchanggeng
-Description: 
-FilePath: \DailyArXiv\main.py
-Copyright (c) 2024 jiaxun.com, Inc. All Rights Reserved
-'''
+# Author: zhouchanggeng
+# Date: 2025-06-08 09:32:13
+# LastEditTime: 2025-06-08 22:43:25
+# LastEditors: zhouchanggeng
+# Description:
+# FilePath: \DailyArXiv\main.py
+# Copyright (c) 2024 jiaxun.com, Inc. All Rights Reserved
 import sys
 import time
+import logging
 import pytz
 from datetime import datetime
+
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 from config import keywords, max_result, issues_result, readme_file, issue_template_file, column_names
 from utils import get_daily_papers_by_keyword_with_retries, generate_table, back_up_files,\
@@ -53,8 +55,8 @@ for keyword in keywords:
     if len(keyword.split()) == 1: link = "AND" # for keyword with only one word, We search for papers containing this keyword in both the title and abstract.
     else: link = "OR"
     papers = get_daily_papers_by_keyword_with_retries(keyword, column_names, max_result, link)
-    if papers is None: # failed to get papers
-        print("Failed to get papers!")
+    if papers is None:  # failed to get papers
+        logger.error("Failed to get papers for keyword '%s'!", keyword)
         f_rm.close()
         f_is.close()
         restore_files(readme_file, issue_template_file)
